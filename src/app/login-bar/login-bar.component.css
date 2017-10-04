@@ -1,0 +1,25 @@
+.alto-menu{
+  height: 65px;
+}
+.tamano-img{
+  width: 60px;
+  height: 60px;
+  padding: 10px 5px 5px 5px;
+  margin-bottom: 10px;
+}
+.tamano-img-boton{
+  width: 100%;
+  padding: 5% 5% 5% 5%;
+}
+.tamano-menu{
+  margin: 10px 10px 10px 10px;
+}
+.button-menu{
+  width: 12.6% !important;
+  height: 120px !important;
+  color: white;
+  margin: 4px 4px 4px 4px;
+}
+.btn{
+  line-height: 18px !important;
+}
