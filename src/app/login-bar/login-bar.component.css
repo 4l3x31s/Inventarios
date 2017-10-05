@@ -8,8 +8,8 @@
   margin-bottom: 10px;
 }
 .tamano-img-boton{
-  width: 100%;
-  padding: 15% 15% 0% 15%;
+  width: 60px;
+  padding-top: 10%;
 }
 .tamano-menu{
   margin: 10px 10px 10px 10px;
@@ -33,4 +33,17 @@
   position:relative;
   margin-top: 10px !important;
 
+}
+.tabs{
+  height: 90px !important;
+}
+.tabs .tab{
+  height: 100% !important;
+}
+.tabs .indicator {
+  background-color: #003aff;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+  background-color: transparent;
+  color: #0017ff;
 }
