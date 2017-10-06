@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'sic-registra-producto',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registra-producto.component.css']
 })
 export class RegistraProductoComponent implements OnInit {
-
-  constructor() { }
-
+  formulaArticulo = 50 * 2 + 50;
+  kilo;
+  constructor() {
+  }
   ngOnInit() {
   }
 
