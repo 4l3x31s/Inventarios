@@ -4,7 +4,7 @@
   <h3>Registro de Nuevos Productos</h3>
   </div>
   <br />
-  <form class="col s12">
+  <form class="col s12" >
     <div class="row">
       <div class="center-align input-field col s4">
         <input id="cod_articulo" type="text" class="validate">
@@ -18,39 +18,40 @@
         <label for="descripcion">Descripción</label>
       </div>
       <div class="center-align input-field col s6">
-        <input id="precio_kilo" type="number"  class="validate" ngModel="precioKilo">
+        <input [(ngModel)]="precioKilo" id="precio_kilo" (change)="calculaPrecioFinal()" type="number"  class="validate" [ngModelOptions]="{standalone: true}">
         <label for="precio_kilo">Precio por Kilo</label>
       </div>
+
       <div class="center-align input-field col s6 ">
-        <input id="gastos" type="number" value="{{precioKilo}}" class="validate">
+        <input id="gastos" type="number" (change)="calculaPrecioFinal()" step="any" value="{{montoGasto | number : '1.0'}}" readonly [(ngModel)]="montoGasto" class="validate" [ngModelOptions]="{standalone: true}">
         <label for="gastos">Gastos</label>
       </div>
       <div class="center-align input-field col s6">
-        <input id="peso_stock" type="number" value="0" class="validate">
+        <input id="peso_stock" [(ngModel)]="pesoStock" (change)="calculaPrecioFinal()" type="number"  class="validate" [ngModelOptions]="{standalone: true}">
         <label for="peso_stock">Precio Stock</label>
       </div>
       <div class="center-align input-field col s6 ">
-        <input id="precio_compra" type="number" value="0" class="validate">
+        <input id="precio_compra" [(ngModel)]="precioCompra" (change)="calculaPrecioFinal()" readonly type="number" class="validate" [ngModelOptions]="{standalone: true}">
         <label for="precio_compra">Precio Compra</label>
       </div>
       <div class="center-align input-field col s6">
-        <input id="p_zona_franca" type="number" value="0" class="validate">
+        <input id="p_zona_franca" type="number" (change)="calculaPrecioFinal()" [(ngModel)]="precioZonaLibre" class="validate" [ngModelOptions]="{standalone: true}">
         <label for="p_zona_franca">P. Zona Franca</label>
       </div>
       <div class="center-align input-field col s6 ">
-        <input id="precio_venta" type="number" value="0" class="validate">
+        <input id="precio_venta" type="number" [(ngModel)]="precioVenta " step="any" (change)="calculaPrecioFinal()" class="validate" [ngModelOptions]="{standalone: true}">
         <label for="precio_venta">Precio Venta</label>
       </div>
       <div class="center-align input-field col s6">
-        <input id="gastos_perc" type="number" value="0" class="validate">
+        <input id="gastos_perc" type="number" (change)="calculaPrecioFinal()" step="any" [(ngModel)]="porcentajeGastos" name="gastos_perc"  class="validate">
         <label for="gastos_perc">% Gastos %</label>
       </div>
       <div class="center-align input-field col s6 ">
-        <input id="precio_mercado" type="number" value="0" class="validate">
+        <input id="precio_mercado" type="number" [(ngModel)]="precioMercado" step="any" (change)="calculaPrecioFinal()" name="precio_mercado" class="validate">
         <label for="precio_mercado">Precio Mercado</label>
       </div>
       <div class="center-align input-field col s9">
-        <input id="mensaje" type="text" class="validate" value="{{formulaArticulo}}">
+        <input id="mensaje" type="text" class="validate" value="">
         <label for="mensaje">Mensaje</label>
       </div>
     </div>
