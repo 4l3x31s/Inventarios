@@ -1,20 +1,18 @@
 <div class="row">
-  <br />
   <div class="center-align">
-  <h3>Registro de Nuevos Productos</h3>
+  <h5>Registro de Nuevos Productos</h5>
   </div>
-  <br />
   <form class="col s12" >
     <div class="row">
       <div class="center-align input-field col s4">
-        <input id="cod_articulo" type="text" class="validate">
+        <input id="cod_articulo" type="text" class="validate" value=" ">
         <label for="cod_articulo">Código Artículo</label>
       </div>
     </div>
     <div class="divider"></div>
     <div class="row">
       <div class="center-align input-field col s9">
-        <input id="descripcion" type="text" class="validate">
+        <input id="descripcion" type="text" placeholder="Descripcion" class="validate" value=" ">
         <label for="descripcion">Descripción</label>
       </div>
       <div class="center-align input-field col s6">
@@ -23,7 +21,7 @@
       </div>
 
       <div class="center-align input-field col s6 ">
-        <input id="gastos" type="number" (change)="calculaPrecioFinal()" step="any" value="{{montoGasto | number : '1.0'}}" readonly [(ngModel)]="montoGasto" class="validate" [ngModelOptions]="{standalone: true}">
+        <input id="gastos" type="number" (change)="calculaPrecioFinal()" step="any" value="{{montoGasto | number : '1.0'}}" disabled [(ngModel)]="montoGasto" class="validate" [ngModelOptions]="{standalone: true}">
         <label for="gastos">Gastos</label>
       </div>
       <div class="center-align input-field col s6">
@@ -31,7 +29,7 @@
         <label for="peso_stock">Precio Stock</label>
       </div>
       <div class="center-align input-field col s6 ">
-        <input id="precio_compra" [(ngModel)]="precioCompra" (change)="calculaPrecioFinal()" readonly type="number" class="validate" [ngModelOptions]="{standalone: true}">
+        <input id="precio_compra" [(ngModel)]="precioCompra" (change)="calculaPrecioFinal()" type="number" class="validate" readonly [ngModelOptions]="{standalone: true}">
         <label for="precio_compra">Precio Compra</label>
       </div>
       <div class="center-align input-field col s6">
@@ -51,10 +49,50 @@
         <label for="precio_mercado">Precio Mercado</label>
       </div>
       <div class="center-align input-field col s9">
-        <input id="mensaje" type="text" class="validate" value="">
+        <input id="mensaje" type="text" class="validate" value=" ">
         <label for="mensaje">Mensaje</label>
       </div>
     </div>
     <div class="divider"></div>
+    <br />
+    <div class="divider"></div>
+    <div class="center-align input-field col s4 ">
+      <input id="jasmine_content" type="number"  step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Nazareo</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="s" type="number"  step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Galeria</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="ss" type="number"  step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Precio Por Llegar</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="sss" type="number"  step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Amanecer</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="ssss" type="number"  step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Por Entregar</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="ssssts" type="number" step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Center</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="sssss" type="number" step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Deposito</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="sssssss" type="number" step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Por Recibir</label>
+    </div>
+    <div class="center-align input-field col s4 ">
+      <input id="ssssssss" type="number" step="any" name="precio_mercado" class="validate" value="0">
+      <label for="precio_mercado">Precio Mercado</label>
+    </div>
+
+
   </form>
 </div>

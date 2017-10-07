@@ -26,7 +26,7 @@ export class RegistraProductoComponent implements OnInit {
   public calculaPrecioFinal() {
     this.montoGasto = (this.porcentajeGastos * this.precioZonaLibre) / 100;
     this.precioCompra = (this.precioKilo * this.pesoStock) + this.precioZonaLibre + this.montoGasto;
-    this.precioVenta = this.precioMercado = this.precioCompra;
+    //this.precioVenta = this.precioMercado = this.precioCompra;
   }
 
 }
