@@ -1,10 +1,10 @@
 input{
   height: 2em !important;
   margin: 0px !important;
-  font-size: 20px !important;
+  font-size: 13px !important;
 }
 label{
-  font-size: 20px !important;
+  font-size: 15px !important;
 }
 .row{
   margin-bottom: 2px;

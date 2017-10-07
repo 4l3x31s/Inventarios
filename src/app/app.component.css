@@ -1,1 +1,10 @@
-
+.nav-clase{
+  line-height: 40px !important;
+  min-height: 40px !important;
+}
+nav.nav-extended .nav-wrapper{
+  min-height: 40px;
+}
+nav{
+  line-height: 40px;
+}
