@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ServicioSicService {
   url = 'https://app-pos.herokuapp.com/articulo';
-  cabecera: any;
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'token': '12312312'
+  })
 
   constructor(private http: Http) {
   }
 
   getArticulos() {
-    this.cabecera = new Headers();
-    this.cabecera.set('token', '123');
-    this.cabecera.set('Content-Type', 'application/json');
     return this.http.get(this.url, {
-      headers: this.cabecera
+      headers: this.headers
     }).map(res => res.json())
       .toPromise();
   }
