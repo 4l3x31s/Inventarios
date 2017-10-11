@@ -3,6 +3,7 @@ import {NgModel} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {ResponseArticulo} from "../response/response-articulo";
 import {ServicioSicService} from "../services/servicio-sic.service";
+import {SicService} from "../services/sic.service";
 
 @Component({
   selector: 'sic-registra-producto',
@@ -24,7 +25,7 @@ export class RegistraProductoComponent implements OnInit {
    mensaje: any;
    respuesta: any;*/
 
-  constructor(private servicioArticulo: ServicioSicService) {
+  constructor(private servicioArticulo: ServicioSicService, private sicService: SicService) {
   }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class RegistraProductoComponent implements OnInit {
       .catch(error => {
         console.error(error);
       });
+    this.sicService.listArticulos();
   }
 
   public calculaPrecioFinal() {

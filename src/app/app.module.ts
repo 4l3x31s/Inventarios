@@ -16,6 +16,8 @@ import {CierreGestionComponent} from './cierre-gestion/cierre-gestion.component'
 import {RouterModule, Routes} from "@angular/router";
 import {ServicioSicService} from "./services/servicio-sic.service";
 import {HttpModule} from "@angular/http";
+import {HttpClientModule} from '@angular/common/http';
+import {SicService} from "./services/sic.service";
 
 const appRoutes: Routes = [
   {path: 'nuevo-producto', component: RegistraProductoComponent},
@@ -45,9 +47,11 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [ServicioSicService],
+  providers: [ServicioSicService,
+    SicService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
