@@ -14,6 +14,8 @@ import {ReportesComponent} from './reportes/reportes.component';
 import {DiscosComponent} from './discos/discos.component';
 import {CierreGestionComponent} from './cierre-gestion/cierre-gestion.component';
 import {RouterModule, Routes} from "@angular/router";
+import {ServicioSicService} from "./services/servicio-sic.service";
+import {HttpModule} from "@angular/http";
 
 const appRoutes: Routes = [
   {path: 'nuevo-producto', component: RegistraProductoComponent},
@@ -42,9 +44,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpModule
   ],
-  providers: [],
+  providers: [ServicioSicService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
