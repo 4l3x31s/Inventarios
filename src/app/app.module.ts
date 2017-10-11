@@ -1,18 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar.component';
-import { LoginBarComponent } from './login-bar/login-bar.component';
-import { RegistraProductoComponent } from './registra-producto/registra-producto.component';
+import {AppComponent} from './app.component';
+import {NavbarComponent} from './navbar.component';
+import {LoginBarComponent} from './login-bar/login-bar.component';
+import {RegistraProductoComponent} from './registra-producto/registra-producto.component';
 import {FormsModule} from "@angular/forms";
-import { PedidosComponent } from './pedidos/pedidos.component';
-import { EntregasComponent } from './entregas/entregas.component';
-import { VentasComponent } from './ventas/ventas.component';
-import { EstadoCuentasComponent } from './estado-cuentas/estado-cuentas.component';
-import { ReportesComponent } from './reportes/reportes.component';
-import { DiscosComponent } from './discos/discos.component';
-import { CierreGestionComponent } from './cierre-gestion/cierre-gestion.component';
+import {PedidosComponent} from './pedidos/pedidos.component';
+import {EntregasComponent} from './entregas/entregas.component';
+import {VentasComponent} from './ventas/ventas.component';
+import {EstadoCuentasComponent} from './estado-cuentas/estado-cuentas.component';
+import {ReportesComponent} from './reportes/reportes.component';
+import {DiscosComponent} from './discos/discos.component';
+import {CierreGestionComponent} from './cierre-gestion/cierre-gestion.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {path: 'nuevo-producto', component: RegistraProductoComponent},
+  {path: 'pedidos', component: PedidosComponent},
+  {path: 'entregas', component: EntregasComponent},
+  {path: 'estado-cuentas', component: EstadoCuentasComponent},
+  {path: 'reportes', component: ReportesComponent},
+  {path: 'discos', component: DiscosComponent},
+  {path: 'cierre-gestion', component: CierreGestionComponent}
+]
 
 @NgModule({
   declarations: [
@@ -30,9 +41,11 @@ import { CierreGestionComponent } from './cierre-gestion/cierre-gestion.componen
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
