@@ -13,7 +13,7 @@ export class SicService {
   }
 
   listArticulos() {
-    this.http.get(this.url + '/articulo').subscribe(data => {
+    this.http.get(this.url + '/articulo/list').subscribe(data => {
       console.log(data);
     });
   }
