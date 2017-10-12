@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MdlArticulo} from "../model/mdl-articulo";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {MdlArticulo} from '../model/mdl-articulo';
 
 @Injectable()
 export class SicService {
   headers: HttpHeaders;
   url: string;
+  valor: string;
 
   constructor(private http: HttpClient) {
     this.url = 'https://app-pos.herokuapp.com';
@@ -24,10 +25,14 @@ export class SicService {
       });
   }
 
-  addArtoculo(articulo: MdlArticulo) {
-    this.http.post(this.url + '', articulo).subscribe(
+  addArticulo(articulo: MdlArticulo) {
+    this.valor = JSON.stringify(articulo);
+    console.log(this.valor);
+    this.http.post(this.url + '/articulo/add', this.valor, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    }).subscribe(
       data => {
-      console.log(data);
-    });
+        console.log(data);
+      });
   }
 }

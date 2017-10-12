@@ -4,6 +4,8 @@ import {Observable} from 'rxjs/Observable';
 import {ResponseArticulo} from "../response/response-articulo";
 import {ServicioSicService} from "../services/servicio-sic.service";
 import {SicService} from "../services/sic.service";
+import {MdlArticulo} from "../model/mdl-articulo";
+import {ObjArticulo} from "../clases/obj-articulo";
 
 @Component({
   selector: 'sic-registra-producto',
@@ -29,22 +31,24 @@ export class RegistraProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.servicioArticulo.getArticulos()
-      .then(data => {
-        console.log(data.lista);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    /*this.servicioArticulo.getArticulos()
+     .then(data => {
+     console.log(data.lista);
+     })
+     .catch(error => {
+     console.error(error);
+     });
 
-    this.servicioArticulo.getUsers()
-      .then(data => {
-        console.log(data.results);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+     this.servicioArticulo.getUsers()
+     .then(data => {
+     console.log(data.results);
+     })
+     .catch(error => {
+     console.error(error);
+     });*/
     this.sicService.listArticulos();
+    this.sicService.addArticulo(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
+      15, 350.5, 400.69, 410.99)));
   }
 
   public calculaPrecioFinal() {
