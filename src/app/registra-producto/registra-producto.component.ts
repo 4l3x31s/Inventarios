@@ -49,6 +49,8 @@ export class RegistraProductoComponent implements OnInit {
     this.sicService.listArticulos();
     this.sicService.addArticulo(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
       15, 350.5, 400.69, 410.99)));
+    this.sicService.addPost2(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
+      15, 350.5, 400.69, 410.99)));
   }
 
   public calculaPrecioFinal() {
