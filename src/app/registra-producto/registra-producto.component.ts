@@ -6,6 +6,7 @@ import {ServicioSicService} from "../services/servicio-sic.service";
 import {SicService} from "../services/sic.service";
 import {MdlArticulo} from "../model/mdl-articulo";
 import {ObjArticulo} from "../clases/obj-articulo";
+import {ResponseGetArticulo} from "../response/response-get-articulo";
 
 @Component({
   selector: 'sic-registra-producto',
@@ -13,7 +14,9 @@ import {ObjArticulo} from "../clases/obj-articulo";
   styleUrls: ['./registra-producto.component.css']
 })
 export class RegistraProductoComponent implements OnInit {
-
+  respuestaArticulo: ResponseGetArticulo;
+  codigoArticulo;
+  descripcion;
   precioKilo = 0;
   pesoStock = 0;
   precioZonaLibre = 0;
@@ -22,6 +25,8 @@ export class RegistraProductoComponent implements OnInit {
   precioCompra = 0;
   precioMercado = 0;
   precioVenta = 0;
+  seActualiza: boolean;
+
   /*
    articulos: any;
    mensaje: any;
@@ -46,16 +51,50 @@ export class RegistraProductoComponent implements OnInit {
      .catch(error => {
      console.error(error);
      });*/
-    this.sicService.listArticulos();
-    this.sicService.addArticulo(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
-      15, 350.5, 400.69, 410.99)));
-    this.sicService.addPost2(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
-      15, 350.5, 400.69, 410.99)));
+    //this.sicService.listArticulos();
+    //this.sicService.addArticulo(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
+    //  15, 350.5, 400.69, 410.99)));
+    /*this.sicService.addPost2(new MdlArticulo(new ObjArticulo('T01asdas', 'TABLE SAMSUNG 10', 'tab 10', 15, 1.5, 500, 5,
+      15, 350.5, 400.69, 410.99)));*/
+    //this.sicService.examplePost();
+    this.seActualiza = false;
   }
 
   public calculaPrecioFinal() {
     this.montoGasto = (this.porcentajeGastos * this.precioZonaLibre) / 100;
     this.precioCompra = (this.precioKilo * this.pesoStock) + this.precioZonaLibre + this.montoGasto;
+  }
+
+  public buscaProducto() {
+    this.sicService.getArticulo(this.codigoArticulo).subscribe(
+      data => {
+        console.log(data);
+        //this.respuestaArticulo = data;
+        if (data.articulo != null) {
+          this.seActualiza = true;
+          this.descripcion = data.articulo.descripcion;
+          this.precioKilo = data.articulo.precioKilo;
+          this.pesoStock = data.articulo.peso;
+          this.precioZonaLibre = data.articulo.precioZonaLibre;
+          this.porcentajeGastos = data.articulo.porcentajeGasto;
+          this.precioCompra = data.articulo.precioCompra;
+          this.precioMercado = data.articulo.precioMercado;
+          this.precioVenta = data.articulo.precioVenta;
+          this.montoGasto = (this.porcentajeGastos * this.precioZonaLibre) / 100;
+        }
+      });
+  }
+
+  public guardarArticulo() {
+    if (!this.seActualiza) {
+      this.sicService.addArticulo(new MdlArticulo(new ObjArticulo(this.codigoArticulo, this.descripcion,
+        this.descripcion, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
+        this.montoGasto, this.precioCompra, this.precioVenta, this.precioMercado)));
+    } else {
+      this.sicService.updateArticulo(new MdlArticulo(new ObjArticulo(this.codigoArticulo, this.descripcion,
+        this.descripcion, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
+        this.montoGasto, this.precioCompra, this.precioVenta, this.precioMercado)));
+    }
   }
 
 }

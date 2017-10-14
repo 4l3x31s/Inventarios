@@ -5,14 +5,14 @@
   <form class="col s12" >
     <div class="row">
       <div class="center-align input-field col s4">
-        <input id="cod_articulo" type="text" class="validate" value="" placeholder="ej. asc0123">
+        <input id="cod_articulo" [(ngModel)]="codigoArticulo" name="codigoArticulo" type="text" class="validate" value="" placeholder="ej. asc0123" (change)="buscaProducto()">
         <label for="cod_articulo">Código Artículo</label>
       </div>
     </div>
     <div class="divider"></div>
     <div class="row">
       <div class="center-align input-field col s9">
-        <input id="descripcion" type="text" class="validate" value="" placeholder="ej. producto...">
+        <input id="descripcion" type="text" class="validate" [(ngModel)]="descripcion" value="" placeholder="ej. producto..." name="descripcion">
         <label for="descripcion">Descripción</label>
       </div>
       <div class="center-align input-field col s6">
@@ -60,7 +60,7 @@
         <i class="material-icons">menu</i>
       </a>
       <ul>
-        <li><a class="btn-floating red waves-effect waves-light"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating red waves-effect waves-light" (click)="guardarArticulo()"><i class="material-icons">save</i></a></li>
         <li><a class="btn-floating yellow darken-1 waves-effect waves-light"><i class="material-icons">format_quote</i></a></li>
         <li><a class="btn-floating green waves-effect waves-light"><i class="material-icons">publish</i></a></li>
         <li><a class="btn-floating blue waves-effect waves-light"><i class="material-icons">attach_file</i></a></li>
@@ -106,4 +106,21 @@
 
 
   </form>
+
+</div>
+
+
+
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
 </div>
