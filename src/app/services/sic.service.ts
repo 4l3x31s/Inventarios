@@ -11,8 +11,8 @@ export class SicService {
   jsonNew: string;
 
   constructor(private http: HttpClient) {
-    //this.url = 'https://app-pos.herokuapp.com';
-    this.url = 'http://localhost:8080';
+    this.url = 'https://app-pos.herokuapp.com';
+    //this.url = 'http://localhost:8080';
   }
 
   listArticulos() {
