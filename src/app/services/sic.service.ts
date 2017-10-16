@@ -31,6 +31,7 @@ export class SicService {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     }).subscribe(
       data => {
+        console.log(data);
         return data;
       });
   }
@@ -41,30 +42,18 @@ export class SicService {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     }).subscribe(
       data => {
+        console.log(data);
         return data;
       });
   }
 
-  addPost2(articulo: MdlArticulo) {
-    this.valor = JSON.stringify(articulo);
-    this.http.post('https://reqres.in/api/users', this.valor, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json;charset=utf-8'),
-    }).subscribe(
-      data => {
-        return data;
-      });
-  }
-
-  examplePost() {
-    this.valor = `{
-      "nombre":"Alexeis",
-      "dato":"adsadsad"
-    }`;
-    this.http.post('http://localhost:10080/Ocio-web/rest/members/tarea', this.valor, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json;charset=utf-8'),
+  deleteArticulo(codigo: string) {
+    this.http.delete(this.url + '/articulo/delete/' + codigo, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
     }).subscribe(
       data => {
         console.log(data);
+        return data;
       });
   }
 }

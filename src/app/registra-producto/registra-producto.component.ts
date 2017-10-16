@@ -26,6 +26,7 @@ export class RegistraProductoComponent implements OnInit {
   precioMercado = 0;
   precioVenta = 0;
   seActualiza: boolean;
+  mensaje;
 
   /*
    articulos: any;
@@ -66,13 +67,24 @@ export class RegistraProductoComponent implements OnInit {
   }
 
   public buscaProducto() {
+    this.seActualiza = false;
+    this.descripcion = '';
+    this.precioKilo = 0;
+    this.pesoStock = 0;
+    this.precioZonaLibre = 0;
+    this.porcentajeGastos = 0;
+    this.precioCompra = 0;
+    this.precioMercado = 0;
+    this.precioVenta = 0;
+    this.mensaje = '';
+    this.montoGasto = 0;
     this.sicService.getArticulo(this.codigoArticulo).subscribe(
       data => {
         console.log(data);
         //this.respuestaArticulo = data;
         if (data.articulo != null) {
           this.seActualiza = true;
-          this.descripcion = data.articulo.descripcion;
+          this.descripcion = data.articulo.nombre;
           this.precioKilo = data.articulo.precioKilo;
           this.pesoStock = data.articulo.peso;
           this.precioZonaLibre = data.articulo.precioZonaLibre;
@@ -81,6 +93,7 @@ export class RegistraProductoComponent implements OnInit {
           this.precioMercado = data.articulo.precioMercado;
           this.precioVenta = data.articulo.precioVenta;
           this.montoGasto = (this.porcentajeGastos * this.precioZonaLibre) / 100;
+          this.mensaje = data.articulo.descripcion;
         }
       });
   }
@@ -88,12 +101,19 @@ export class RegistraProductoComponent implements OnInit {
   public guardarArticulo() {
     if (!this.seActualiza) {
       this.sicService.addArticulo(new MdlArticulo(new ObjArticulo(this.codigoArticulo, this.descripcion,
-        this.descripcion, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
+        this.mensaje, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
         this.montoGasto, this.precioCompra, this.precioVenta, this.precioMercado)));
     } else {
       this.sicService.updateArticulo(new MdlArticulo(new ObjArticulo(this.codigoArticulo, this.descripcion,
-        this.descripcion, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
+        this.mensaje, this.precioKilo, this.pesoStock, this.precioZonaLibre, this.porcentajeGastos,
         this.montoGasto, this.precioCompra, this.precioVenta, this.precioMercado)));
+    }
+  }
+
+  public eliminarArticulo() {
+    if (this.seActualiza) {
+      console.log(this.seActualiza)
+      this.sicService.deleteArticulo(this.codigoArticulo);
     }
   }
 
